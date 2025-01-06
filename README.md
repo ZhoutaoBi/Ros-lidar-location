@@ -103,6 +103,7 @@
 	sudo nmcli device wifi connect "user_name" password "xxxxx" ifname wlan0 
 
 2、ros is installed with one click
+
 	wget http://fishros.com/install -O fishros && . fishros
 
 3、Create workspace
