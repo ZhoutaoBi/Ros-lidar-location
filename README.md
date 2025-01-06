@@ -9,18 +9,18 @@ The program use the Lubancat1S with linux and Lidar with hector-mapping,
 Lubancat 1S, install the simplest system, ssh commond
 
 # init the ros environment, board environment and ros package
-##1、open wifi
+## open wifi
 
 	sudo nmcli radio wifi off			
 	sudo nmcli radio wifi on			
 	nmcli dev wifi list			
 	sudo nmcli device wifi connect "user_name" password "xxxxx" ifname wlan0 
 
-##2、ros is installed with one click
+## ros is installed with one click
 
 	wget http://fishros.com/install -O fishros && . fishros
 
-##3、Create workspace
+## Create workspace
 
 	mkdir -p ~/catkin_ws/src
 	cd ~/catkin_ws/src
@@ -30,7 +30,7 @@ Lubancat 1S, install the simplest system, ssh commond
 	source devel/setup.bash
 
 
-##4、Open serial ports 3 and 5 // The two serial ports are connected to radar and flight control respectively
+## Open serial ports 3 and 5 // The two serial ports are connected to radar and flight control respectively
 
 
 **SUGGESTION**:This step you can followed by the user manual of the board you use.
@@ -40,7 +40,7 @@ Lubancat 1S, install the simplest system, ssh commond
 	ls /dev/tty* 	//Check whether the function is enabled successfully, for example, /dev/ttyS3
 
 
-##5、Test radar reading data,Place the lsn10p package into the src workspace
+## Test radar reading data,Place the lsn10p package into the src workspace
 
  Operate according to radar documentation 
 the example of the radar data is as follows:
@@ -54,10 +54,10 @@ the example of the radar data is as follows:
 Various packages will be missing when installing, because it is a simple version of ros, according to the error csdn!
     
 	
-##6、Go to GitHub to download the corresponding hector-mapping package and put it in src
+## Go to GitHub to download the corresponding hector-mapping package and put it in src
 	'catkin_make' your workspace
 
-##7、test the finish
+## test the finish
 
 
 
@@ -71,24 +71,24 @@ you need to follow the steps in their manual like wifi,serial port and so on.
 In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),
 the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)
 
-###1：GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
+### GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
 The folder is the hector-mapping package,we only use the (src\hector_slam-melodic-devel\hector_mapping),
 other folders are not used.
 
-###2:GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
+### GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
 This folder is about the basic configuration of radar
 
-###3:GitHub\Ros-lidar-location\catkin_ws\src\topic_example
+### GitHub\Ros-lidar-location\catkin_ws\src\topic_example
 This folder is about the 
 1:open serial port 
 2:radar data processing and mapping data publishing 
 3:communication between the Map coordinates and stm32 by serial
 
-###4:GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
+### GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
 The folder is about the auto start of the program when you turn on the power
 
 ##some important change tips:
-###1: Real-time updates about coordinates
+### Real-time updates about coordinates
 If you use the hector-mapping, yeou'll notice that there's some coordinate delay.Since we need to use the lidar coordinates and the optical flow coordinates of the UAV for data fusion, it is necessary to improve the real-time performance of the map coordinates, but the output speed of the built-in map coordinates will cause congestion. 
 
 So I made the following changes:
@@ -98,7 +98,7 @@ So I made the following changes:
 
 I make the default = 1.The default value was originally 10, but I set it to 1 so as not to cause congestion, the old data will be replaced directly, and only the latest coordinate will be stored. The disadvantage is that it may lead to poor coherence of the data and some distortion of the waveform, but it is not harmful.
 
-###2: Design of communication protocol with stm32
+### Design of communication protocol with stm32
 
 
 
