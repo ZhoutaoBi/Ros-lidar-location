@@ -131,8 +131,11 @@
 5、Test radar reading data,Place the lsn10p package into the src workspace
 	/* Operate according to radar documentation */	
     // the example of the radar data is as follows:
+    
 	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_msgs
+ 
 	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_driver
+ 
 	roslaunch lslidar_driver lslidar_serial.launch	// Serial port print data
 	/*
     *Various packages will be missing when installing, because it is a simple version of ros, according to the error csdn!
