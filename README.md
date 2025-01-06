@@ -6,7 +6,7 @@
 	It was created by three members of AIENSS of South China Agricultural University. 
 	If you have any questions, please contact us at bizhoutao@yeah.net
 
-# ros-location
+# Ros-lidar-location
 	The program use the Lubancat1S with linux and Lidar by hector-mapping algorithm,
 	Lubancat 1S, install the simplest system, ssh commond
 
@@ -16,22 +16,22 @@
 	the hector-mapping package you need to download from GitHub (the correct version of the package),
 	different ros need different version of the hector-mapping package,every board have their own user manual,
 	you need to follow the steps in their manual like wifi,serial port and so on.
-	In my catkin_ws(GitHub\ros-location\catkin_ws\src),the finish program is (GitHub\ros-location\catkin_ws\src\topic_example\launch\bi.launch)
+	In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)
 
-		1:GitHub\ros-location\catkin_ws\src\hector_slam-melodic-devel
+		1:GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
 		The folder is the hector-mapping package,we only use the (src\hector_slam-melodic-devel\hector_mapping),
 		other folders are not used.
 
-		2:GitHub\ros-location\catkin_ws\src\lsn10p
+		2:GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
 		This folder is about the basic configuration of radar
 
-		3:GitHub\ros-location\catkin_ws\src\topic_example
+		3:GitHub\Ros-lidar-location\catkin_ws\src\topic_example
 		This folder is about the 
 			1:open serial port 
 			2:radar data processing and mapping data publishing 
 			3:communication between the Map coordinates and stm32 by serial
 
-		4:GitHub\ros-location\catkin_ws\src\robot_upstart
+		4:GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
 		This folder is about the auto start of the program when you turn on the power
 
 	some important change tips:
@@ -42,7 +42,7 @@
 			but the output speed of the built-in map coordinates will cause congestion. 
 
 			So I made the following changes:
-			GitHub\ros-location\catkin_ws\src\hector_slam-melodic-devel\hector_mapping\launch\mapping_default.launch
+			GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel\hector_mapping\launch\mapping_default.launch
 
 			at line 7: arg_name="scan_subscriber_queue_size" default="1"
 			I make the default = 1.The default value was originally 10, but I set it to 1 so as not to cause congestion, 
@@ -62,7 +62,7 @@
 
 
 			made the following changes:
-			GitHub\ros-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp
+			GitHub\Ros-lidar-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp
 
 			The sned communication protocol is:
 
@@ -76,10 +76,10 @@
 			ctrlFlag frame:buf[7]= 42 // 42 is the control flag
 
 			buf[8] :
-				GitHub\ros-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp line 136 
+				GitHub\Ros-lidar-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp line 136 
 				unsigned char getCrc8(unsigned char *ptr, unsigned short len)
 
-				GitHub\ros-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp line 69
+				GitHub\Ros-lidar-location\catkin_ws\src\topic_example\src\mbot_linux_serial.cpp line 69
 				buf[3 + length] = getCrc8(buf, 3 + length);//buf[8]
 			
 			buf[9]:0x0d
