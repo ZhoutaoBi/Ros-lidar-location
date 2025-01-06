@@ -70,7 +70,8 @@
 	the hector-mapping package you need to download from GitHub (the correct version of the package),
 	different ros need different version of the hector-mapping package,every board have their own user manual,
 	you need to follow the steps in their manual like wifi,serial port and so on.
-	In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)
+	In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),
+	the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)
 
 		1:GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
 		The folder is the hector-mapping package,we only use the (src\hector_slam-melodic-devel\hector_mapping),
