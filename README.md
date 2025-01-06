@@ -65,31 +65,31 @@ Various packages will be missing when installing, because it is a simple version
 
 # How to use the program
 
-## Whatever you use any board,you also need follow the steps.
+Whatever you use any board,you also need follow the steps.
 the hector-mapping package you need to download from GitHub **(the correct version of the package)**,
 different ros need different version of the hector-mapping package,every board have their own user manual,
 you need to follow the steps in their manual like wifi,serial port and so on.
 In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),
 ***the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)***
 
-### 1、GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
+## 1、GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
 The folder is the hector-mapping package,we only use the (src\hector_slam-melodic-devel\hector_mapping),
 other folders are not used.
 
-### 2、GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
+## 2、GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
 This folder is about the basic configuration of radar
 
-### 3、GitHub\Ros-lidar-location\catkin_ws\src\topic_example
+## 3、GitHub\Ros-lidar-location\catkin_ws\src\topic_example
 This folder is about the 
 1:open serial port 
 2:radar data processing and mapping data publishing 
 3:communication between the Map coordinates and stm32 by serial
 
-### 4、GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
+## 4、GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
 The folder is about the auto start of the program when you turn on the power
 
-## some important change tips:
-### Real-time updates about coordinates
+# some important change tips:
+## Real-time updates about coordinates
 If you use the hector-mapping, yeou'll notice that there's some coordinate delay.Since we need to use the lidar coordinates and the optical flow coordinates of the UAV for data fusion, it is necessary to improve the real-time performance of the map coordinates, but the output speed of the built-in map coordinates will cause congestion. 
 
 So I made the following changes:
@@ -99,7 +99,7 @@ So I made the following changes:
 
 I make the default = 1.The default value was originally 10, but I set it to 1 so as not to cause congestion, the old data will be replaced directly, and only the latest coordinate will be stored. The disadvantage is that it may lead to poor coherence of the data and some distortion of the waveform, but it is not harmful.
 
-### Design of communication protocol with stm32
+## Design of communication protocol with stm32
 
 
 
