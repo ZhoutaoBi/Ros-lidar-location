@@ -6,7 +6,7 @@ The project is the deployment of Lidar in the G unmanned aerial vehicle of the N
 
 
 # Ros-lidar-location
-The program use the Lubancat1S with linux and Lidar with hector-mapping,
+The program use the Lubancat1S with linux and LSn10p Lidar with hector-mapping,
 Lubancat 1S, install the linux by shell, ssh
 
 # init the ros environment, board environment and ros package
