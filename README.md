@@ -7,12 +7,66 @@
 # Copyright (C) [2024] by [ZhoutaoBi] 
 
 # Ros-lidar-location
-	The program use the Lubancat1S with linux and Lidar by hector-mapping algorithm,
+	The program use the Lubancat1S with linux and Lidar with hector-mapping,
 	Lubancat 1S, install the simplest system, ssh commond
+
+# init the ros environment, board environment and ros package
+1、open wifi
+
+	sudo nmcli radio wifi off			
+	sudo nmcli radio wifi on			
+	nmcli dev wifi list			
+	sudo nmcli device wifi connect "user_name" password "xxxxx" ifname wlan0 
+
+2、ros is installed with one click
+
+	wget http://fishros.com/install -O fishros && . fishros
+
+3、Create workspace
+
+	mkdir -p ~/catkin_ws/src
+	cd ~/catkin_ws/src
+	catkin_init_workspace
+	cd ~/catkin_ws/
+	catkin_make
+	source devel/setup.bash
+
+
+4、Open serial ports 3 and 5 // The two serial ports are connected to radar and flight control respectively
+
+    /*
+    * SUGGESTION:This step you can followed by the user manual of the board you use.
+    */
+	/boot/uEnv/board.txt (board is the name of the board you use.)
+	restart		//Enter "sync" on the terminal and then power off the device
+	ls /dev/tty* 	//Check whether the function is enabled successfully, for example, /dev/ttyS3
+
+
+5、Test radar reading data,Place the lsn10p package into the src workspace
+
+	/* Operate according to radar documentation */	
+    // the example of the radar data is as follows:
+    
+	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_msgs
+ 
+	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_driver
+ 
+	roslaunch lslidar_driver lslidar_serial.launch	// Serial port print data
+	/*
+    *Various packages will be missing when installing, because it is a simple version of ros, according to the error csdn!
+    */
+	
+6、Go to GitHub to download the corresponding hector-mapping package and put it in src
+	'catkin_make' your workspace
+
+7、test the finish
+
+
+
 
 # How to use the program
 
-	Whatever you use any board,you also need follow the steps like 1,2,3,5,6
+	Whatever you use any board,you also need follow the steps.
 	the hector-mapping package you need to download from GitHub (the correct version of the package),
 	different ros need different version of the hector-mapping package,every board have their own user manual,
 	you need to follow the steps in their manual like wifi,serial port and so on.
@@ -95,55 +149,4 @@
 			more information about the protocol can be found in the stm32 code.
 
 
-# init the ros environment and ros package
-1、open wifi
-
-	sudo nmcli radio wifi off			
-	sudo nmcli radio wifi on			
-	nmcli dev wifi list			
-	sudo nmcli device wifi connect "user_name" password "xxxxx" ifname wlan0 
-
-2、ros is installed with one click
-
-	wget http://fishros.com/install -O fishros && . fishros
-
-3、Create workspace
-
-	mkdir -p ~/catkin_ws/src
-	cd ~/catkin_ws/src
-	catkin_init_workspace
-	cd ~/catkin_ws/
-	catkin_make
-	source devel/setup.bash
-
-
-4、Open serial ports 3 and 5 // The two serial ports are connected to radar and flight control respectively
-
-    /*
-    *
-    * SUGGESTION:This step you can followed by the user manual of the board you use.
-    *
-    */
-	/boot/uEnv/board.txt (board is the name of the board you use.)
-	restart		//Enter "sync" on the terminal and then power off the device
-	ls /dev/tty* 	//Check whether the function is enabled successfully, for example, /dev/ttyS3
-
-
-5、Test radar reading data,Place the lsn10p package into the src workspace
-	/* Operate according to radar documentation */	
-    // the example of the radar data is as follows:
-    
-	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_msgs
- 
-	catkin_make -DCATKIN_WHITELIST_PACKAGES=lslidar_driver
- 
-	roslaunch lslidar_driver lslidar_serial.launch	// Serial port print data
-	/*
-    *Various packages will be missing when installing, because it is a simple version of ros, according to the error csdn!
-    */
-	
-6、Go to GitHub to download the corresponding hector-mapping package and put it in src
-	'catkin_make' your workspace
-
-7、test the finish
 
