@@ -2,7 +2,8 @@
 # Project description
 The project is the deployment of Lidar in the G unmanned aerial vehicle of the National College Students Electronic Design Competition in 2023. It was created by three members of AIENSS of South China Agricultural University. If you have any questions, please contact us at **bizhoutao@yeah.net**
 
-# Copyright (C) [2024] by [ZhoutaoBi] 
+# @brief Wrote by [ZhoutaoBi] at 2025-01-05
+
 
 # Ros-lidar-location
 The program use the Lubancat1S with linux and Lidar with hector-mapping,
