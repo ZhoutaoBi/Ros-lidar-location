@@ -77,7 +77,7 @@ The folder is the hector-mapping package,we only use the (src\hector_slam-melodi
 other folders are not used.
 
 ## 2、GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
-This folder is about the basic configuration of radar
+This folder is about the basic configuration of Lidar
 
 ## 3、GitHub\Ros-lidar-location\catkin_ws\src\topic_example
 This folder is about the 
