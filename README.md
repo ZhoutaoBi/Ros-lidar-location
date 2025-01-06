@@ -97,6 +97,7 @@
 
 # init the ros environment and ros package
 1、open wifi
+
 	sudo nmcli radio wifi off			
 	sudo nmcli radio wifi on			
 	nmcli dev wifi list			
