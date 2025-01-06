@@ -70,25 +70,25 @@ the hector-mapping package you need to download from GitHub **(the correct versi
 different ros need different version of the hector-mapping package,every board have their own user manual,
 you need to follow the steps in their manual like wifi,serial port and so on.
 In my catkin_ws(GitHub\Ros-lidar-location\catkin_ws\src),
-the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)
+***the finish program is (GitHub\Ros-lidar-location\catkin_ws\src\topic_example\launch\bi.launch)***
 
-### GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
+### 1、GitHub\Ros-lidar-location\catkin_ws\src\hector_slam-melodic-devel
 The folder is the hector-mapping package,we only use the (src\hector_slam-melodic-devel\hector_mapping),
 other folders are not used.
 
-### GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
+### 2、GitHub\Ros-lidar-location\catkin_ws\src\lsn10p
 This folder is about the basic configuration of radar
 
-### GitHub\Ros-lidar-location\catkin_ws\src\topic_example
+### 3、GitHub\Ros-lidar-location\catkin_ws\src\topic_example
 This folder is about the 
 1:open serial port 
 2:radar data processing and mapping data publishing 
 3:communication between the Map coordinates and stm32 by serial
 
-### GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
+### 4、GitHub\Ros-lidar-location\catkin_ws\src\robot_upstart
 The folder is about the auto start of the program when you turn on the power
 
-##some important change tips:
+## some important change tips:
 ### Real-time updates about coordinates
 If you use the hector-mapping, yeou'll notice that there's some coordinate delay.Since we need to use the lidar coordinates and the optical flow coordinates of the UAV for data fusion, it is necessary to improve the real-time performance of the map coordinates, but the output speed of the built-in map coordinates will cause congestion. 
 
